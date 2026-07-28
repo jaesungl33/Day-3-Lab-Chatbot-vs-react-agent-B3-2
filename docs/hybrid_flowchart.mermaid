@@ -1,0 +1,78 @@
+%% 💘 CUPID AGENT — HYBRID FLOWCHART (Role 5 · Mốc 4)
+%% Phân luồng: câu hỏi đơn giản → Chatbot path | câu hỏi cần dữ liệu → ReAct Agent path
+%% Số liệu trên sơ đồ lấy từ docs/trace_eval.md (10 test case, gpt-4o-mini)
+
+flowchart TD
+    U(["👤 Người dùng gửi câu hỏi"]) --> LOGIN{"🔐 Đã đăng nhập?"}
+
+    LOGIN -- "Chưa" --> GUEST["Chạy ở chế độ khách<br/>Agent phải hỏi lại danh tính<br/>⚠️ F2 - dễ sinh USER_NOT_FOUND"]
+    LOGIN -- "Rồi" --> CTX["Chèn CURRENT USER vào system prompt<br/>user_id · gender · age · city · hobbies · seeking"]
+
+    GUEST --> SAFE
+    CTX --> SAFE
+
+    SAFE{"🛡️ Nội dung an toàn?<br/>vị thành niên / lừa đảo / phá dữ liệu"}
+    SAFE -- "Không an toàn" --> REFUSE["🚫 Từ chối ngay<br/>KHÔNG gọi tool<br/>Case #9 - 0 tool call"]
+    REFUSE --> OUT
+
+    SAFE -- "An toàn" --> ROUTE{"🔀 Câu hỏi có cần<br/>dữ liệu trong database?"}
+
+    %% ---------- CHATBOT PATH ----------
+    ROUTE -- "KHÔNG · tư vấn lý thuyết" --> C1["💬 CHATBOT PATH<br/>run_baseline_chatbot"]
+    C1 --> C2["1 lần gọi LLM · 0 tool"]
+    C2 --> C3["Case #1, #2 - trả lời trong 1 bước<br/>Case #9 - từ chối rõ ràng"]
+    C3 --> OUT
+
+    %% ---------- REACT AGENT PATH ----------
+    ROUTE -- "CÓ · tra hồ sơ, tìm ứng viên,<br/>chấm điểm, lưu feedback" --> R1["🤖 REACT AGENT PATH<br/>run_react_agent"]
+
+    R1 --> LOOP["🔄 Vòng lặp ReAct<br/>step = 1 … MAX_ITERATIONS = 5"]
+    LOOP --> TH["🧠 Thought<br/>suy luận bước kế tiếp"]
+    TH --> PARSE{"LLM sinh ra gì?"}
+
+    PARSE -- "Final Answer" --> FIN["🏁 Final Answer<br/>trích dẫn số liệu từ Observation"]
+    FIN --> OUT
+
+    PARSE -- "Không parse được<br/>⚠️ F1 - 11/11 lỗi ở case #7, #9" --> PERR["👁 Observation = LỖI cú pháp<br/>nạp lại vào history"]
+    PERR --> GUARD
+
+    PARSE -- "Action - tool[args]" --> TOOL{"🛠️ Chọn tool"}
+
+    TOOL --> T1["get_user_profile<br/>read-only"]
+    TOOL --> T2["search_candidates<br/>read-only · lọc gender"]
+    TOOL --> T3["calculate_compatibility<br/>read-only · score 0-100"]
+    TOOL --> T4["save_match_feedback<br/>⚠️ WRITE"]
+
+    T1 --> VAL
+    T2 --> VAL
+    T3 --> VAL
+    T4 --> VAL
+
+    VAL{"✅ Validate tham số<br/>tuổi ≥ 18 · user tồn tại · đủ field"}
+    VAL -- "Sai / vi phạm" --> ERR["👁 Observation ok=false<br/>SAFETY_VIOLATION · USER_NOT_FOUND<br/>INVALID_ARGUMENT<br/>🟢 F4 - 6/6 lỗi KHÔNG crash"]
+    VAL -- "Hợp lệ" --> OBS["👁 Observation ok=true<br/>JSON dữ liệu thật từ mock DB"]
+
+    ERR --> GUARD
+    OBS --> GUARD
+
+    GUARD{"🛡️ Còn lượt lặp?<br/>step nhỏ hơn MAX_ITERATIONS"}
+    GUARD -- "Còn lượt" --> TH
+    GUARD -- "Hết lượt" --> FB["🛡️ SAFE FALLBACK<br/>Không thể hoàn thành trong 5 bước<br/>⚠️ F3 - case #10 đã có đủ điểm<br/>nhưng hết lượt viết kết luận"]
+    FB --> OUT
+
+    OUT(["📤 Trả lời người dùng<br/>+ trace Thought / Action / Observation"])
+
+    %% ---------- STYLE ----------
+    classDef chatbot fill:#1f2a44,stroke:#4ad9d9,stroke-width:2px,color:#eaf6ff
+    classDef agent fill:#2a1f3d,stroke:#8b6cf7,stroke-width:2px,color:#f2eef8
+    classDef danger fill:#3d1f24,stroke:#ff6b6b,stroke-width:2px,color:#ffecec
+    classDef safe fill:#1f3d2f,stroke:#46d69f,stroke-width:2px,color:#e9fff5
+    classDef tool fill:#123536,stroke:#4ad9d9,stroke-width:1px,color:#dffdfd
+    classDef write fill:#3d3320,stroke:#ffb454,stroke-width:2px,color:#fff4e0
+
+    class C1,C2,C3 chatbot
+    class R1,LOOP,TH,FIN,OBS agent
+    class REFUSE,ERR,PERR,FB danger
+    class SAFE,VAL,GUARD safe
+    class T1,T2,T3 tool
+    class T4 write

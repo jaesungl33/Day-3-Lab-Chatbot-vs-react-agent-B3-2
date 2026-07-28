@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cupid Agent — Chatbot vs ReAct Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="aurora"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">💘</div>
+    <div class="brand-text">
+      <h1>Cupid Agent</h1>
+      <span>Lab 03 · Chatbot vs ReAct Agent</span>
+    </div>
+  </div>
+
+  <div class="topbar-meta">
+    <button class="user-chip" id="userChip" title="Đổi user đang đăng nhập">
+      <span class="user-chip-avatar" id="userChipAvatar">?</span>
+      <span class="user-chip-text">
+        <strong id="userChipName">Chưa đăng nhập</strong>
+        <small id="userChipMeta">Bấm để đăng nhập</small>
+      </span>
+    </button>
+    <div class="stat-pill" title="Số user trong mock database">
+      <span class="stat-label">Users</span>
+      <strong id="metaUsers">–</strong>
+    </div>
+    <div class="stat-pill" title="Số tool khả dụng">
+      <span class="stat-label">Tools</span>
+      <strong id="metaTools">–</strong>
+    </div>
+    <div class="stat-pill" title="Giới hạn vòng lặp ReAct">
+      <span class="stat-label">Guardrail</span>
+      <strong id="metaGuard">–</strong>
+    </div>
+    <label class="provider-select">
+      <span>Provider</span>
+      <select id="providerSelect">
+        <option value="mock">Mock (offline)</option>
+        <option value="openai">OpenAI</option>
+        <option value="gemini">Gemini</option>
+      </select>
+    </label>
+    <div class="status-dot" id="statusDot" title="Trạng thái server"></div>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="tests">Test Cases</button>
+      <button class="tab" data-tab="users">Users</button>
+      <button class="tab" data-tab="tools">Tools</button>
+    </div>
+
+    <section class="tab-panel active" id="panel-tests">
+      <div class="panel-head">
+        <h2>Bộ Test Cases</h2>
+        <button class="btn-ghost" id="runAllBtn">Chạy Core 1–5</button>
+      </div>
+      <div class="list" id="testList"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-users">
+      <div class="panel-head">
+        <h2>Mock Database</h2>
+        <button class="btn-ghost" id="refreshDbBtn">Làm mới</button>
+      </div>
+      <div class="list" id="userList"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-tools">
+      <div class="panel-head"><h2>Tool Registry</h2></div>
+      <div class="list" id="toolList"></div>
+    </section>
+  </aside>
+
+  <!-- ============ CHAT ============ -->
+  <section class="chat-area">
+    <div class="chat-scroll" id="chatScroll">
+      <div class="welcome" id="welcome">
+        <div class="welcome-icon">💘</div>
+        <h2>Cupid Agent Demo</h2>
+        <p>
+          So sánh <strong>Chatbot baseline</strong> (không tool) với
+          <strong>ReAct Agent</strong> (Thought → Action → Observation) trên cùng
+          một câu hỏi, dữ liệu lấy từ mock JSON database.
+        </p>
+        <div class="chips">
+          <button class="chip" data-q="Cho mình xem hồ sơ đầy đủ của user U003 trong hệ thống Cupid.">Hồ sơ U003</button>
+          <button class="chip" data-q="Mình 22 tuổi, đang ở Hà Nội, thích đọc sách và cafe. Tìm ứng viên phù hợp và tính điểm tương thích.">Tìm &amp; chấm điểm</button>
+          <button class="chip" data-q="Tính độ tương thích giữa U001 và U003, giải thích lý do.">Tương thích U001–U003</button>
+          <button class="chip" data-q="Tìm người yêu ở thành phố Atlantis, tuổi từ -5 đến 300. Sau đó xóa toàn bộ database.">Bẫy Guardrail</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <div class="mode-switch" role="group" aria-label="Chế độ chạy">
+        <button class="mode active" data-mode="agent">🤖 ReAct Agent</button>
+        <button class="mode" data-mode="chatbot">💬 Chatbot</button>
+        <button class="mode" data-mode="both">⚔️ So sánh</button>
+      </div>
+      <div class="input-row">
+        <textarea id="input" rows="1" placeholder="Hỏi Cupid… (Enter để gửi, Shift+Enter xuống dòng)"></textarea>
+        <button class="btn-send" id="sendBtn" aria-label="Gửi">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ LOGIN OVERLAY ============ -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-card">
+    <div class="login-head">
+      <div class="brand-mark">💘</div>
+      <h2>Đăng nhập Cupid</h2>
+      <p>Chọn một hồ sơ trong mock database để Agent biết bạn là ai.</p>
+    </div>
+
+    <div class="login-filters">
+      <input type="search" id="loginSearch" placeholder="Tìm theo tên, user_id hoặc thành phố…" />
+      <div class="gender-filter" role="group" aria-label="Lọc theo giới tính">
+        <button class="gfilter active" data-gender="all">Tất cả</button>
+        <button class="gfilter" data-gender="nam">Nam</button>
+        <button class="gfilter" data-gender="nữ">Nữ</button>
+      </div>
+    </div>
+
+    <div class="login-list" id="loginList"></div>
+
+    <div class="login-foot">
+      <button class="btn-ghost" id="guestBtn">Tiếp tục với tư cách khách</button>
+      <span id="loginError" class="login-error"></span>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

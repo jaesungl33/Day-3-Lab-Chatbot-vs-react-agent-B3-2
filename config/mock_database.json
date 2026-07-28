@@ -1,0 +1,683 @@
+{
+  "schema_version": 2,
+  "gender_values": [
+    "nam",
+    "nữ",
+    "khác"
+  ],
+  "intent_values": [
+    "nghiêm túc",
+    "tìm hiểu",
+    "kết bạn"
+  ],
+  "profiles": [
+    {
+      "user_id": "U001",
+      "display_name": "An",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "nghiêm túc",
+      "age": 25,
+      "city": "Hà Nội",
+      "bio": "Kỹ sư phần mềm, thích những cuộc trò chuyện sâu và các chuyến đi ngắn cuối tuần.",
+      "hobbies": [
+        "đọc sách",
+        "chạy bộ",
+        "du lịch",
+        "cà phê"
+      ],
+      "values": [
+        "trung thực",
+        "gia đình",
+        "phát triển bản thân"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng nội",
+        "điềm tĩnh",
+        "tò mò"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "nuôi thú cưng"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thiếu trung thực"
+      ]
+    },
+    {
+      "user_id": "U002",
+      "display_name": "Bình",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "tìm hiểu",
+      "age": 27,
+      "city": "Hà Nội",
+      "bio": "Nhà thiết kế sản phẩm yêu nghệ thuật, âm nhạc và khám phá những quán ăn mới.",
+      "hobbies": [
+        "nhiếp ảnh",
+        "âm nhạc",
+        "du lịch",
+        "cà phê"
+      ],
+      "values": [
+        "trung thực",
+        "sáng tạo",
+        "cân bằng cuộc sống"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng ngoại",
+        "sáng tạo",
+        "ấm áp"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ăn uống lành mạnh",
+        "thích tiệc tùng"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "kiểm soát"
+      ]
+    },
+    {
+      "user_id": "U003",
+      "display_name": "Chi",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "nghiêm túc",
+      "age": 24,
+      "city": "Hà Nội",
+      "bio": "Giáo viên ngoại ngữ, thích đọc sách và dành thời gian ngoài thiên nhiên.",
+      "hobbies": [
+        "đọc sách",
+        "yoga",
+        "nấu ăn",
+        "du lịch"
+      ],
+      "values": [
+        "gia đình",
+        "trung thực",
+        "lòng nhân ái"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "personality": [
+        "hướng nội",
+        "điềm tĩnh",
+        "chu đáo"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ăn chay",
+        "tập thể thao"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thích tiệc tùng"
+      ]
+    },
+    {
+      "user_id": "U004",
+      "display_name": "Dũng",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "kết bạn",
+      "age": 29,
+      "city": "Hà Nội",
+      "bio": "Làm trong ngành truyền thông, thích không khí sôi động và gặp gỡ bạn bè.",
+      "hobbies": [
+        "bóng đá",
+        "âm nhạc",
+        "phim ảnh",
+        "cà phê"
+      ],
+      "values": [
+        "sự nghiệp",
+        "tự do",
+        "sáng tạo"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng ngoại",
+        "hài hước",
+        "năng động"
+      ],
+      "lifestyle": [
+        "hút thuốc",
+        "thích tiệc tùng",
+        "ngủ muộn"
+      ],
+      "deal_breakers": [
+        "ăn chay",
+        "kiểm soát"
+      ]
+    },
+    {
+      "user_id": "U005",
+      "display_name": "Giang",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "nghiêm túc",
+      "age": 26,
+      "city": "TP. Hồ Chí Minh",
+      "bio": "Chuyên viên marketing mê chạy bộ, ẩm thực và những hành trình khám phá.",
+      "hobbies": [
+        "chạy bộ",
+        "nấu ăn",
+        "du lịch",
+        "phim ảnh"
+      ],
+      "values": [
+        "gia đình",
+        "phát triển bản thân",
+        "cân bằng cuộc sống"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng ngoại",
+        "lạc quan",
+        "thẳng thắn"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thiếu trung thực"
+      ]
+    },
+    {
+      "user_id": "U006",
+      "display_name": "Huy",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "tìm hiểu",
+      "age": 31,
+      "city": "TP. Hồ Chí Minh",
+      "bio": "Kiến trúc sư thích nhiếp ảnh đường phố, cà phê và các hoạt động sáng tạo.",
+      "hobbies": [
+        "nhiếp ảnh",
+        "cà phê",
+        "đọc sách",
+        "du lịch"
+      ],
+      "values": [
+        "trung thực",
+        "sáng tạo",
+        "tự do"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "personality": [
+        "hướng nội",
+        "sáng tạo",
+        "điềm tĩnh"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "nuôi thú cưng",
+        "ngủ muộn"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thiếu trung thực"
+      ]
+    },
+    {
+      "user_id": "U007",
+      "display_name": "Lan",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "nghiêm túc",
+      "age": 28,
+      "city": "Đà Nẵng",
+      "bio": "Hướng dẫn viên du lịch yêu biển, thể thao và lối sống tích cực.",
+      "hobbies": [
+        "du lịch",
+        "bơi lội",
+        "chạy bộ",
+        "nấu ăn"
+      ],
+      "values": [
+        "gia đình",
+        "lòng nhân ái",
+        "phát triển bản thân"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh",
+        "Tiếng Hàn"
+      ],
+      "personality": [
+        "hướng ngoại",
+        "ấm áp",
+        "năng động"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "kiểm soát"
+      ]
+    },
+    {
+      "user_id": "U008",
+      "display_name": "Minh",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "kết bạn",
+      "age": 23,
+      "city": "Đà Nẵng",
+      "bio": "Sinh viên cao học thích công nghệ, game và các buổi xem phim cùng bạn bè.",
+      "hobbies": [
+        "công nghệ",
+        "game",
+        "phim ảnh",
+        "âm nhạc"
+      ],
+      "values": [
+        "trung thực",
+        "tự do",
+        "phát triển bản thân"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng nội",
+        "hài hước",
+        "tò mò"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ngủ muộn",
+        "nuôi thú cưng"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thiếu trung thực"
+      ]
+    },
+    {
+      "user_id": "U009",
+      "display_name": "Ngọc",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "nghiêm túc",
+      "age": 26,
+      "city": "Hà Nội",
+      "bio": "Dược sĩ yêu sách, cà phê buổi sáng và những buổi chạy bộ ven hồ.",
+      "hobbies": [
+        "đọc sách",
+        "cà phê",
+        "chạy bộ",
+        "yoga"
+      ],
+      "values": [
+        "trung thực",
+        "gia đình",
+        "lòng nhân ái"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng nội",
+        "chu đáo",
+        "điềm tĩnh"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thích tiệc tùng"
+      ]
+    },
+    {
+      "user_id": "U010",
+      "display_name": "Phương",
+      "gender": "nữ",
+      "seeking": [
+        "nam",
+        "nữ"
+      ],
+      "intent": "tìm hiểu",
+      "age": 25,
+      "city": "Hà Nội",
+      "bio": "Biên tập viên nội dung, mê phim indie, nhạc acoustic và các quán cà phê nhỏ.",
+      "hobbies": [
+        "phim ảnh",
+        "âm nhạc",
+        "cà phê",
+        "đọc sách"
+      ],
+      "values": [
+        "sáng tạo",
+        "tự do",
+        "cân bằng cuộc sống"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng ngoại",
+        "sáng tạo",
+        "hài hước"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ngủ muộn",
+        "ăn uống lành mạnh"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "kiểm soát"
+      ]
+    },
+    {
+      "user_id": "U011",
+      "display_name": "Quân",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "nghiêm túc",
+      "age": 30,
+      "city": "Hà Nội",
+      "bio": "Bác sĩ nội trú, thích yoga, nấu ăn cuối tuần và các chuyến leo núi ngắn.",
+      "hobbies": [
+        "yoga",
+        "nấu ăn",
+        "du lịch",
+        "chạy bộ"
+      ],
+      "values": [
+        "gia đình",
+        "trung thực",
+        "phát triển bản thân"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh",
+        "Tiếng Đức"
+      ],
+      "personality": [
+        "điềm tĩnh",
+        "chu đáo",
+        "hướng nội"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thiếu trung thực"
+      ]
+    },
+    {
+      "user_id": "U012",
+      "display_name": "Trang",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "kết bạn",
+      "age": 23,
+      "city": "TP. Hồ Chí Minh",
+      "bio": "Sinh viên thiết kế đồ họa, thích vẽ, nhiếp ảnh và thử món mới mỗi tuần.",
+      "hobbies": [
+        "nhiếp ảnh",
+        "vẽ",
+        "cà phê",
+        "phim ảnh"
+      ],
+      "values": [
+        "sáng tạo",
+        "tự do",
+        "phát triển bản thân"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "hướng ngoại",
+        "tò mò",
+        "năng động"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ngủ muộn",
+        "thích tiệc tùng"
+      ],
+      "deal_breakers": [
+        "kiểm soát",
+        "thiếu trung thực"
+      ]
+    },
+    {
+      "user_id": "U013",
+      "display_name": "Sơn",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "nghiêm túc",
+      "age": 28,
+      "city": "TP. Hồ Chí Minh",
+      "bio": "Chuyên viên tài chính, thích đọc sách kinh tế, bơi lội và cà phê sáng.",
+      "hobbies": [
+        "đọc sách",
+        "bơi lội",
+        "cà phê",
+        "chạy bộ"
+      ],
+      "values": [
+        "trung thực",
+        "sự nghiệp",
+        "gia đình"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "điềm tĩnh",
+        "thẳng thắn",
+        "tò mò"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thích tiệc tùng"
+      ]
+    },
+    {
+      "user_id": "U014",
+      "display_name": "Uyên",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "tìm hiểu",
+      "age": 27,
+      "city": "Đà Nẵng",
+      "bio": "Đầu bếp bánh ngọt, yêu biển, nấu ăn và những buổi sáng yên tĩnh.",
+      "hobbies": [
+        "nấu ăn",
+        "bơi lội",
+        "du lịch",
+        "yoga"
+      ],
+      "values": [
+        "gia đình",
+        "lòng nhân ái",
+        "cân bằng cuộc sống"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "ấm áp",
+        "chu đáo",
+        "lạc quan"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ăn uống lành mạnh",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "kiểm soát"
+      ]
+    },
+    {
+      "user_id": "U015",
+      "display_name": "Việt",
+      "gender": "nam",
+      "seeking": [
+        "nữ"
+      ],
+      "intent": "nghiêm túc",
+      "age": 32,
+      "city": "Đà Nẵng",
+      "bio": "Kỹ sư xây dựng, thích bóng đá, du lịch bụi và cà phê vỉa hè.",
+      "hobbies": [
+        "bóng đá",
+        "du lịch",
+        "cà phê",
+        "công nghệ"
+      ],
+      "values": [
+        "trung thực",
+        "gia đình",
+        "sự nghiệp"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh"
+      ],
+      "personality": [
+        "thẳng thắn",
+        "năng động",
+        "hài hước"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "tập thể thao",
+        "nuôi thú cưng"
+      ],
+      "deal_breakers": [
+        "thiếu trung thực",
+        "kiểm soát"
+      ]
+    },
+    {
+      "user_id": "U016",
+      "display_name": "Yến",
+      "gender": "nữ",
+      "seeking": [
+        "nam"
+      ],
+      "intent": "nghiêm túc",
+      "age": 22,
+      "city": "Hà Nội",
+      "bio": "Sinh viên ngôn ngữ, thích đọc sách, học tiếng mới và cà phê cùng bạn bè.",
+      "hobbies": [
+        "đọc sách",
+        "cà phê",
+        "âm nhạc",
+        "du lịch"
+      ],
+      "values": [
+        "gia đình",
+        "phát triển bản thân",
+        "trung thực"
+      ],
+      "languages": [
+        "Tiếng Việt",
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "personality": [
+        "hướng nội",
+        "tò mò",
+        "chu đáo"
+      ],
+      "lifestyle": [
+        "không hút thuốc",
+        "ăn uống lành mạnh",
+        "dậy sớm"
+      ],
+      "deal_breakers": [
+        "hút thuốc",
+        "thích tiệc tùng"
+      ]
+    }
+  ],
+  "match_feedback": [
+    {
+      "match_id": "M-U001-U002",
+      "feedback": "like"
+    }
+  ]
+}
